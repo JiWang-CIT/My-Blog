@@ -1,3 +1,7 @@
+---
+typora-copy-images-to: ./figs
+---
+
 # MACOSでLATEXを使う
 
 ## まえがき
