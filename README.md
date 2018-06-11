@@ -1,5 +1,9 @@
-# 個人的呟き
+# MACOSでLATEXを使う
 
-## MACOSでLATEXを使う
+[内容]:UseLatexInMacOS.md
 
-本サイトURL： https://jiwang-cit.github.io/My-Blog/
+# 超解像技術の画像圧縮への応用
+
+
+
+
