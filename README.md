@@ -4,6 +4,8 @@
 
 # 超解像技術の画像圧縮への応用
 
+[内容](SuperResolutionForImageCompression.md)
+
 
 
 
