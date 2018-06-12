@@ -1,10 +1,8 @@
-# MACOSでLATEXを使う
+# [MACOSでLATEXを使う](UseLatexInMacOS.md)
 
-[内容](UseLatexInMacOS.md)
 
-# 超解像技術の画像圧縮への応用
+# [超解像技術の画像圧縮への応用](SuperResolutionForImageCompression.md)
 
-[内容](SuperResolutionForImageCompression.md)
 
 
 
