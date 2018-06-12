@@ -68,14 +68,14 @@ Coming Soon
 
 ---
 
-[^8k]: http://www.sharp.co.jp/aquos/sharp8k/
-[^survey]: https://link.springer.com/article/10.1007/s00138-014-0623-4
-[^sony]: https://www.sony.jp/msc/enjoy/products/feature/20141106/
-[^toshiba]: http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm
-[^fujitsu]: http://www.fmworld.net/product/phone/f-01j/display.html
-[^mitsubishi]: http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html
-[^Google]: https://www.arxiv-vanity.com/papers/1606.01299/
-[^RAISRCode]: https://github.com/movehand/raisr
+[^8k]: [Sharp 8K](http://www.sharp.co.jp/aquos/sharp8k/)
+[^survey]: [サーベイ論文](https://link.springer.com/article/10.1007/s00138-014-0623-4)
+[^sony]: [Sonyの紹介ページ](https://www.sony.jp/msc/enjoy/products/feature/20141106/)
+[^toshiba]: [Toshibaの紹介ページ](http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm)
+[^fujitsu]: [Fujitsuの紹介ページ](http://www.fmworld.net/product/phone/f-01j/display.html)
+[^mitsubishi]: [Mitsubishiの紹介ページ](http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html)
+[^Google]: [RAISR: Rapid and Accurate Image Super Resolution](https://www.arxiv-vanity.com/papers/1606.01299/)
+[^RAISRCode]: [A Python implementation of RAISR](https://github.com/movehand/raisr)
 
 
 
