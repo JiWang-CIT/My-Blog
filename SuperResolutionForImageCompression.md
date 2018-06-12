@@ -14,7 +14,7 @@
 
 コンテンツの視点から言うと，解像度を上げることで，ディテールをより鮮明に見えるとか，同じ精度条件下でより広い視野を映れるメリットがある．宇宙探索や精密医療画像などのアプローチはともかく，セキュリティ監視画像や画像理解の応用にも役に立てる．
 
-技術進歩の立場からも，2018年現在，4K解像度はテレビやモニターのデフォルトスペックになり，ポータブル市場でも，4Kスクリーンを使用するスマートフォンや4K解像度をサポートするプロジェクターも売られている．更に，4Kに止まらず，コンシューマ向けの[8Kテレビ][8k]も上半期にリリースした. それに対して，既存コンテンツはFull HDがデフォルトで4Kや8Kコンテンツがまだ少ない．つまり，**表示できる解像度が提供できる解像度より大きいという現実問題が存在する**．
+技術進歩の立場からも，2018年現在，4K解像度はテレビやモニターのデフォルトスペックになり，ポータブル市場でも，4Kスクリーンを使用するスマートフォンや4K解像度をサポートするプロジェクターも売られている．更に，4Kに止まらず，コンシューマ向けの8Kテレビも上半期にリリースした[^8k]. それに対して，既存コンテンツはFull HDがデフォルトで4Kや8Kコンテンツがまだ少ない．つまり，**表示できる解像度が提供できる解像度より大きいという現実問題が存在する**．
 
 コンテンツ視点からも，市場的需要の視点からも，既存低解像度画像を高解像度化にする需要が高いことがわかる．
 
@@ -65,14 +65,14 @@ Coming Soon
 
 ---
 
-[8k]: http://www.sharp.co.jp/aquos/sharp8k/ (Sharp 8K)
-[^survey]: https://link.springer.com/article/10.1007/s00138-014-0623-4 "サーベイ論文"
-[^sony]:https://www.sony.jp/msc/enjoy/products/feature/20141106/ [Sonyの紹介ページ]
-[^toshiba][Toshibaの紹介ページ](http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm)
-[^fujitsu][Fujitsuの紹介ページ](http://www.fmworld.net/product/phone/f-01j/display.html)
-[^mitsubishi][Mitsubishiの紹介ページ](http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html)
-[^Google][RAISR: Rapid and Accurate Image Super Resolution](https://www.arxiv-vanity.com/papers/1606.01299/)
-[^RAISRCode][A Python implementation of RAISR](https://github.com/movehand/raisr)
+[^8k]: (Sharp 8K) http://www.sharp.co.jp/aquos/sharp8k/ 
+[^survey]: (サーベイ論文) https://link.springer.com/article/10.1007/s00138-014-0623-4 
+[^sony]: (Sonyの紹介ページ) https://www.sony.jp/msc/enjoy/products/feature/20141106/ 
+[^toshiba]: (Toshibaの紹介ページ) http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm
+[^fujitsu]: (Fujitsuの紹介ページ) http://www.fmworld.net/product/phone/f-01j/display.html
+[^mitsubishi]: (Mitsubishiの紹介ページ) http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html
+[^Google]: (RAISR: Rapid and Accurate Image Super Resolution) https://www.arxiv-vanity.com/papers/1606.01299/
+[^RAISRCode]: (A Python implementation of RAISR) https://github.com/movehand/raisr
 
 
 
