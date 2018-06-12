@@ -68,7 +68,7 @@ Coming Soon
 
 ---
 
-[^8k][Sharp 8K](http://www.sharp.co.jp/aquos/sharp8k/)
+[^8k](Sharp 8K)(http://www.sharp.co.jp/aquos/sharp8k/)
 [^survey][サーベイ論文](https://link.springer.com/article/10.1007/s00138-014-0623-4)
 [^sony][Sonyの紹介ページ](https://www.sony.jp/msc/enjoy/products/feature/20141106/)
 [^toshiba][Toshibaの紹介ページ](http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm)
