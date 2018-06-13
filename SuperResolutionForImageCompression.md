@@ -34,7 +34,7 @@
 この部分の記述はGoogleが2016年に発表した文献[^Google]を参考したもの．PS:その実現コードはGithub上にある．[^RAISRCode]
 
 > Single Image Super Resolution (SISR) is the process of estimating a High-Resolution (HR) version of a Low-Resolution (LR) input image. This is a well-studied problem, which comes up in practice in many applications, such as zoom-in of still and text images, conversion of LR images/videos to high definition screens, and more. The linear degradation model of the SISR problem is formulated by 
-
+>
 > $$
 > z = D_sHx
 > $$
