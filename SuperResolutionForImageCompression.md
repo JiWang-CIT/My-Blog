@@ -40,19 +40,19 @@
 > $$
 >
 
-単一画像超解像技術は式(1)のような単純線形変換で表せる．低解像度画像$z$は求めたい高解像度画像$$x$$をblur演算子$$H$$でぼかした後，ダウンサンプリング演算子$$D_s$$で求められる．
+単一画像超解像技術は式(1)のような単純線形変換で表せる．低解像度画像$$z$$は求めたい高解像度画像$$x$$をblur演算子$$H$$でぼかした後，ダウンサンプリング演算子$$D_s$$で求められる．
 
 ここでの考察は3つある．
 
 1. ぼかし演算子$$H$$の必要性：低解像度画像からの変換過程を整理してみると，フィルターなしでアップサンプリング後，必然的に，エッジ部分が近傍補完のせいで隣接画素間の変化が穏やかになる．言い換えると，画像の周波数が低くなり，視覚的にぼけた画像に見える．ということで，ぼかし演算子$$H$$をダウンサンプリング演算子$$D_s$$から独立させたことこそ，処理プロセスがより明確になるわけ．
 
 2. 実画像と理論モデルの差：式(1)で述べた超解像技術は線形計算に従う変化であるが，実際には，Raw画像以外に，圧縮したものを入力画像として使用する場合も十分考えられる．これも非線形構造の離散データである可能性が高い．更に，漫画の線画や会社logoのような構造不明(線形？非線形？領域ごと混合？)な状況も珍しくない．ここで，その差異をノイズとして導入し，次の式に化するべきではないかと思われる．
-   
-   $$
+
+$$
    z = D_sHx+n
    $$
-   
-   ここで$$n$$はノイズを表す．
+
+ここで$$n$$はノイズを表す．
 
 3. 式(2)からわかることは，複数の高解像度画像が同一の低解像度画像に対応している．つまり，低解像度画像から正解(真)の高画質画像を確定的に求めることが不可能である．よって結果の客観評価方式自体が一種の課題にもなる．(主観評価依存)
 
@@ -68,14 +68,14 @@ Coming Soon
 
 ---
 
-[^8k]: http://www.sharp.co.jp/aquos/sharp8k/
-[^survey]: https://link.springer.com/article/10.1007/s00138-014-0623-4
-[^sony]: https://www.sony.jp/msc/enjoy/products/feature/20141106/
-[^toshiba]: http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm
-[^fujitsu]: http://www.fmworld.net/product/phone/f-01j/display.html
-[^mitsubishi]: http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html
-[^Google]: https://www.arxiv-vanity.com/papers/1606.01299/
-[^RAISRCode]: https://github.com/movehand/raisr
+[^8k]: (Sharp 8K) http://www.sharp.co.jp/aquos/sharp8k/ 
+[^survey]: (サーベイ論文) https://link.springer.com/article/10.1007/s00138-014-0623-4 
+[^sony]: (Sonyの紹介ページ) https://www.sony.jp/msc/enjoy/products/feature/20141106/ 
+[^toshiba]: (Toshibaの紹介ページ) http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm
+[^fujitsu]: (Fujitsuの紹介ページ) http://www.fmworld.net/product/phone/f-01j/display.html
+[^mitsubishi]: (Mitsubishiの紹介ページ) http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html
+[^Google]: (RAISR: Rapid and Accurate Image Super Resolution) https://www.arxiv-vanity.com/papers/1606.01299/
+[^RAISRCode]: (A Python implementation of RAISR) https://github.com/movehand/raisr
 
 
 
