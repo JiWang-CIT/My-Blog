@@ -67,7 +67,7 @@ $$
 1. 既存ルートと同じ通信量でほぼ原画画質の低解像度画像を送信可能
 2. 既存ルートと同じ圧縮率の低解像度画像を送信することで，$$1/k$$ まで通信情報量を削減
 
-１の方は結果画質のみ比較を要するに対し，２の方では，通信量の削減率および結果画質の低下率両方のトレードオフを評価する必要がある．まして，どちらの方も，超解像で増えた計算コストの評価も行なうともっと良い．なお，画質評価について，超解像技術はあくまでも，欠損情報を推測する手法に過ぎない，客観評価指標として，PSNRを用いると不利な局面に落ちるだろう．代わりに，MS-SSIMや主観評価(MOS)を導入すると説得力があると考えられる．
+１の方は結果画質のみ比較を要するに対し，２の方では，通信量の削減率および結果画質の低下率両方のトレードオフを評価する必要がある．まして，どちらの方も，超解像で増えた計算コストの評価も行なうともっと良い．なお，画質評価について，超解像技術はあくまでも，欠損情報を推測する手法に過ぎない，客観評価指標として，PSNRを用いると不利な局面に落ちるだろう．代わりに，MS-SSIM[^msssim]や主観評価(MOS)を導入すると説得力があると考えられる．
 
 よって実験設計は以下となる：
 
@@ -98,6 +98,6 @@ $$
 [^Google]: (RAISR: Rapid and Accurate Image Super Resolution) https://www.arxiv-vanity.com/papers/1606.01299/
 [^RAISRCode]: (A Python implementation of RAISR) https://github.com/movehand/raisr
 
-
+[^msssim]: (Multiscale structural similarity for image quality assessment) https://ieeexplore.ieee.org/document/1292216/
 
 [Back](README.md)
