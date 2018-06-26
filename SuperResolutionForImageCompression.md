@@ -100,4 +100,4 @@ $$
 
 [^msssim]: (Multiscale structural similarity for image quality assessment) https://ieeexplore.ieee.org/document/1292216/
 
-[Back](README.md)
+[Back to Home](README.md)

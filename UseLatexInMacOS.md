@@ -81,4 +81,4 @@ Wordと比べると，事前の環境構築に時間コストが高い，文法�
 
 その三，現代の高速ペース生活においては，Wordでも，LaTeXでも，「提供機能>>需要機能」で使いづらい．代わりに，近年流行ったMarkdownの方が使いやすい．Githubでこの記事を書く際に使うAppもTyporaというMarkdownのエディターである．
 
-[Back](README.md)
+[Back to Home](README.md)
