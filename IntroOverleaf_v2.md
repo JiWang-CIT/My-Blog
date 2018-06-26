@@ -59,7 +59,7 @@
 
 4. テンプレート[@ishigaki(https://qiita.com/ishigaki/items/8da80e4da3e2249a85f8)から
 
-   ``` main.tex
+   ``` latex
    %\documentclass[xelatex,ja=standard,a4paper]{bxjsarticle}
    \documentclass[a4paper]{bxjsreport}
    %\documentclass[xelatex,a4paper,precisetext,noautoxspacing]{bxjsbook}
@@ -129,7 +129,7 @@
 
 3. 「New File」をクリック，「latexmkrc」のファイル名で以下の内容を入力
 
-   ``` latexmkrc
+   ``` latex
    $latex = 'platex';
    $bibtex = 'pbibtex';
    $dvipdf = 'dvipdfmx %O -o %D %S';
@@ -139,7 +139,7 @@
 
 4. テンプレート
 
-   ```main.tex
+   ```latex
    \documentclass[dvipdfmx,autodetect-engine]{jsarticle}
    
    \title{サンプル文書}
