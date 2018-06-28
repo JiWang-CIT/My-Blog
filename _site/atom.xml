@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-06-28T15:52:51+09:00</updated><id>http://localhost:4000/</id><title type="html">Ji Wang’ Blog</title><subtitle>個人的呟き</subtitle><author><name>Ji Wang</name></author><entry><title type="html">OverLeaf v2 での文書作成</title><link href="http://localhost:4000/tutorial/2018/06/28/IntroOverleaf_v2/" rel="alternate" type="text/html" title="OverLeaf v2 での文書作成" /><published>2018-06-28T00:00:00+09:00</published><updated>2018-06-28T00:00:00+09:00</updated><id>http://localhost:4000/tutorial/2018/06/28/IntroOverleaf_v2</id><content type="html" xml:base="http://localhost:4000/tutorial/2018/06/28/IntroOverleaf_v2/">&lt;h2 id=&quot;overleaf-v2とは&quot;&gt;OverLeaf v2とは&lt;/h2&gt;
+
+&lt;p&gt;一言でまとめると，オンラインで使える LaTeX 原稿執筆環境である．オフラインの環境構築は「時間」と「複雑」のクロスミックスにすぎないため，ネット環境が安定であれば，OverLeafを利用するのは好都合であろう．かつ，去年(2017)同じオンラインLaTeXサービスである(ShareLaTeX)を&lt;a href=&quot;https://www.sharelatex.com/blog/2017/07/20/sharelatex-joins-overleaf.html&quot;&gt;買収した&lt;/a&gt;ので，両者の長所の融合となる&lt;a href=&quot;https://www.overleaf.com/blog/641-try-out-overleaf-v2#.WzHXENgzZ24&quot;&gt;OverLeaf v2&lt;/a&gt;がオンラインLaTeX執筆の最善選択である．&lt;/p&gt;
+
+&lt;h2 id=&quot;オンラインでlatexする利点と欠点&quot;&gt;オンラインでLaTeXする利点と欠点&lt;/h2&gt;
+
+&lt;h3 id=&quot;利点&quot;&gt;利点&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;環境構築が不要　◎&lt;/li&gt;
+  &lt;li&gt;共同執筆がしやすい　○&lt;/li&gt;
+  &lt;li&gt;バージョン管理しやすい　○&lt;/li&gt;
+  &lt;li&gt;PCのシステムに問わない　△&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;欠点&quot;&gt;欠点&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ネット環境依存　&lt;/li&gt;
+  &lt;li&gt;セキュリティの懸念&lt;/li&gt;
+  &lt;li&gt;Debugの不自由&lt;/li&gt;
+  &lt;li&gt;容量制限&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overleaf-v2で文章作成&quot;&gt;OverLeaf v2で文章作成&lt;/h2&gt;
+
+&lt;p&gt;好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにサービスの使い方を勉強する．&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h3 id=&quot;powerful-collaboration-features&quot;&gt;Powerful collaboration features&lt;/h3&gt;
+
+  &lt;p&gt;– via overleaf blog&lt;/p&gt;
+
+  &lt;p&gt;Overleaf v2 offers an impressive collection of new and upgraded collaboration features. The collaborative editing is faster and smoother than in Overleaf v1, and it shows you where your collaborators cursors are as they type. The new track changes mode lets you see exactly what has been changed by your collaborators, and allows you to accept or reject each individual change. You can also comment on ranges of text in your document for precise communication.&lt;/p&gt;
+
+  &lt;p&gt;&lt;img src=&quot;https://www.filepicker.io/api/file/TPnpF9pXTOmAnle4ey0q&quot; alt=&quot;collaboration&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;まず，https://v2.overleaf.com/にアクセスしてサービスを起動する．beta版なので，現時点(2018/06/26)で Overleaf or ShareLaTeX のアカウントが必須，が，両者の既存プロジェクトが影響されないので，心配無用．&lt;/p&gt;
+
+&lt;h3 id=&quot;日本語文章作成&quot;&gt;日本語文章作成&lt;/h3&gt;
+
+&lt;p&gt;二つの方法を紹介する．一ツ目はXeLaTeXエンジン(コンパイラ)で文章作成する，もう一つは pLaTeX + dvipdf （≒ dvips + gs）という変換経路になり，日本で現在主流であろう．&lt;/p&gt;
+
+&lt;h4 id=&quot;xelatex-での日本語環境設定&quot;&gt;XeLaTeX での日本語環境設定&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blank Projectを作る&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;main.texの頭の部分(\documentclass{article}と\begin{document}の間)を以下のコードを入力する&lt;/p&gt;
+
+    &lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;\documentclass&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;[a4paper]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;bxjsarticle&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;fontspec&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;zxjatype&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\setjamainfont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ipam.ttf&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\setjasansfont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ipag.ttf&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\setjamonofont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ipag.ttf&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;「Menu」&amp;gt; 「Settings」&amp;gt; 「Compiler」から「XeLaTeX」に設定する&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;テンプレート[@ishigaki(https://qiita.com/ishigaki/items/8da80e4da3e2249a85f8)から&lt;/p&gt;
+
+    &lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;%\documentclass[xelatex,ja=standard,a4paper]{bxjsarticle}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\documentclass&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;[a4paper]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;bxjsreport&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%\documentclass[xelatex,a4paper,precisetext,noautoxspacing]{bxjsbook}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;fontspec&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;zxjatype&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%\usepackage{xltxtra}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\setjamainfont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ipam.ttf&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\setjasansfont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ipag.ttf&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\setjamonofont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ipag.ttf&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;amsmath,amssymb,amsfonts&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;bm&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;siunitx&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;[colorlinks=true, bookmarks=true,
+bookmarksnumbered=true, bookmarkstype=toc, linkcolor=blue,
+urlcolor=blue, citecolor=blue]&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;hyperref&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+   
+&lt;span class=&quot;k&quot;&gt;\title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;平成XX年度修士論文&lt;span class=&quot;k&quot;&gt;\\&lt;/span&gt;XXに関する数値シミュレーション&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;Hoge hoge&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;平成31年2月&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;nt&quot;&gt;\begin{document}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\maketitle&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;abstract&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;c&quot;&gt;%% 目次&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\tableofcontents&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\listoffigures&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\listoftables&lt;/span&gt;
+   
+&lt;span class=&quot;c&quot;&gt;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%%%  本文&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;introduction&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;solution&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;result&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;conclusion&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+   
+   
+&lt;span class=&quot;c&quot;&gt;%% reference&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;\begin{thebibliography}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;99&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\bibitem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;test1&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; reference
+&lt;span class=&quot;c&quot;&gt;%\bibitem{test2} reference&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%\bibitem{test3} reference&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;%&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;\end{thebibliography}&lt;/span&gt;
+   
+   
+&lt;span class=&quot;k&quot;&gt;\appendix&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\chapter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;付録&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;nt&quot;&gt;\end{document}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;platex-での日本語環境設定&quot;&gt;pLaTeX での日本語環境設定&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blank Projectを作る&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;「Menu」&amp;gt; 「Settings」&amp;gt; 「Compiler」から「LaTeX」に設定する&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;「New File」をクリック，「latexmkrc」のファイル名で以下の内容を入力&lt;/p&gt;
+
+    &lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;latex &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; 'platex';
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;bibtex = 'pbibtex';
+&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dvipdf &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; 'dvipdfmx &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;%O -o %D %S';&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;makeindex = 'mendex &lt;span class=&quot;c&quot;&gt;%O -o %D %S';&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mode &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;; 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;テンプレート&lt;/p&gt;
+
+    &lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;\documentclass&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;[dvipdfmx,autodetect-engine]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;jsarticle&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;サンプル文書&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;著者&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;nt&quot;&gt;\begin{document}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\maketitle&lt;/span&gt;
+   
+&lt;span class=&quot;nt&quot;&gt;\begin{abstract}&lt;/span&gt;
+日本語を用いた文書を作成します。    
+&lt;span class=&quot;nt&quot;&gt;\end{abstract}&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;\section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;はじめに&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+&lt;span class=&quot;nt&quot;&gt;\end{document}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;おまけ
+「jlreq.cls」を用いる例：&lt;a href=&quot;https://v2.overleaf.com/read/xhrhnsnqwmgr&quot;&gt;https://v2.overleaf.com/read/xhrhnsnqwmgr&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ji Wang</name></author><category term="LaTeX," /><category term="OverLeaf" /><summary type="html">OverLeaf v2とは</summary></entry><entry><title type="html">Figファイルからデータ取得</title><link href="http://localhost:4000/tips/2018/06/26/ObtainDataFromFig/" rel="alternate" type="text/html" title="Figファイルからデータ取得" /><published>2018-06-26T00:00:00+09:00</published><updated>2018-06-26T00:00:00+09:00</updated><id>http://localhost:4000/tips/2018/06/26/ObtainDataFromFig</id><content type="html" xml:base="http://localhost:4000/tips/2018/06/26/ObtainDataFromFig/">&lt;blockquote&gt;
+  &lt;p&gt;Figファイル：MATLABのFigureオブジェクトをそのまま保存できるファイルフォーマットとして「*.fig」がある．MATLABでのみ再度開くことができるというデメリット以外に，画像の再編成や微修正(カスタマイズ)できる利点がとても使いやすい．&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;保存されたFigファイルを開く方法を&lt;a href=&quot;https://jp.mathworks.com/help/matlab/ref/openfig.html&quot;&gt;公式&lt;/a&gt;に詳しく説明されたが，保存されたデータを取得（または修正）しようとした際のやり方はまだない．よって，これを豆知識として書いてみる．&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MEMO：MATLABが2014bで一部のメソッドを変えた(追加？)したので，新しいバージョンでの操作のみを記録する．&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/MATLABfigFormat.png&quot; alt=&quot;MATLABfigFormat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;図(via &lt;a href=&quot;https://jp.mathworks.com/help/matlab/learn_matlab/understanding-handle-graphics-objects.html&quot;&gt;MATLAB official&lt;/a&gt;)に示しているように，Figureオブジェクトに３通りの階層構造になる．これはグラフィックスプロット関数の種類によって異なる．今回は，一番多く使われる「plot」関数の場合を例(右手の構造)とする．&lt;/p&gt;
+
+&lt;p&gt;「plot」関数では，データを保持するオブジェクトはトップにある「Figure」オブジェクトから数えて，第三層の「Data Objects」である．それに，Dataは軸により「XData」と「YData」として保存されている．したがって，データ取得のコードは以下となる．&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;% Figure -&amp;gt; Axes -&amp;gt; Data Objects(line) -&amp;gt; X or Y Data&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;% 	h.    Children.       Children.        X(Y)Data&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'example.fig'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;XData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;YData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Ji Wang</name></author><category term="MATLAB," /><category term="Code" /><summary type="html">Figファイル：MATLABのFigureオブジェクトをそのまま保存できるファイルフォーマットとして「*.fig」がある．MATLABでのみ再度開くことができるというデメリット以外に，画像の再編成や微修正(カスタマイズ)できる利点がとても使いやすい．</summary></entry><entry><title type="html">超解像技術の画像圧縮への応用</title><link href="http://localhost:4000/tutorial/note/2018/06/13/SuperResolutionForImageCompression/" rel="alternate" type="text/html" title="超解像技術の画像圧縮への応用" /><published>2018-06-13T00:00:00+09:00</published><updated>2018-06-13T00:00:00+09:00</updated><id>http://localhost:4000/tutorial/note/2018/06/13/SuperResolutionForImageCompression</id><content type="html" xml:base="http://localhost:4000/tutorial/note/2018/06/13/SuperResolutionForImageCompression/">&lt;h2 id=&quot;まえがき&quot;&gt;まえがき&lt;/h2&gt;
+
+&lt;p&gt;画像や映像コンテンツには膨大な情報量が存在する．しかも，その情報量は画像解像度の増加(Full HD/2K⇨4K⇨8K)とともに指数倍数で増えていく．近年，画像処理やコンピュータビジョン，人工知能分野で，高解像度画像コンテンツの需要が高まってきている．この情勢につれて，低解像度画像を高解像度画像に変換する超解像技術も注目されている．&lt;/p&gt;
+
+&lt;p&gt;この記事は，超解像技術を簡単に紹介し，その技術を画像圧縮への応用方法を議論する．&lt;/p&gt;
+
+&lt;h2 id=&quot;超解像技術の概要&quot;&gt;超解像技術の概要&lt;/h2&gt;
+
+&lt;p&gt;単刀直入に言うと，「超解像」とは，画像の空間的解像度を上げるという意味である．例えば，Full HD解像度(1920×1080)から4K解像度(3840×2160)に拡張する．&lt;/p&gt;
+
+&lt;h3 id=&quot;超解像技術の需要性&quot;&gt;超解像技術の需要性&lt;/h3&gt;
+
+&lt;p&gt;コンテンツの視点から言うと，解像度を上げることで，ディテールをより鮮明に見えるとか，同じ精度条件下でより広い視野を映れるメリットがある．宇宙探索や精密医療画像などのアプローチはともかく，セキュリティ監視画像や画像理解の応用にも役に立てる．&lt;/p&gt;
+
+&lt;p&gt;技術進歩の立場からも，2018年現在，4K解像度はテレビやモニターのデフォルトスペックになり，ポータブル市場でも，4Kスクリーンを使用するスマートフォンや4K解像度をサポートするプロジェクターも売られている．更に，4Kに止まらず，コンシューマ向けの8Kテレビも上半期にリリースした&lt;sup id=&quot;fnref:8k&quot;&gt;&lt;a href=&quot;#fn:8k&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. それに対して，既存コンテンツはFull HDがデフォルトで4Kや8Kコンテンツがまだ少ない．つまり，&lt;strong&gt;表示できる解像度が提供できる解像度より大きいという現実問題が存在する&lt;/strong&gt;．&lt;/p&gt;
+
+&lt;p&gt;コンテンツ視点からも，市場的需要の視点からも，既存低解像度画像を高解像度化にする需要が高いことがわかる．&lt;/p&gt;
+
+&lt;h3 id=&quot;超解像技術の分類&quot;&gt;超解像技術の分類&lt;/h3&gt;
+
+&lt;p&gt;ネット上に公開したサーベイ論文&lt;sup id=&quot;fnref:survey&quot;&gt;&lt;a href=&quot;#fn:survey&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;や関連記事&lt;sup id=&quot;fnref:sony&quot;&gt;&lt;a href=&quot;#fn:sony&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:toshiba&quot;&gt;&lt;a href=&quot;#fn:toshiba&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:fujitsu&quot;&gt;&lt;a href=&quot;#fn:fujitsu&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:mitsubishi&quot;&gt;&lt;a href=&quot;#fn:mitsubishi&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;を読むと，超解像技術が多種多様に見えるが，根本的に二種類に分類できる．&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;対象画像のみを参照する超解像技術，通称：Single image super-resolution，image interpolationとも呼ばれる&lt;/li&gt;
+  &lt;li&gt;対象画像以外に，ビッグデータや動画の場合に隣接フレームなども参考情報に取り入れ，超解像を行う技術，multi-frame super-resolutionと名付けられる．&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;理論的に，二者のうち，後者の方が参考情報が多くて，より良いクオリティの処理結果が得られるが，アルゴリズムの複雑さや高い計算コストという理由で製品開発に応用しにくい．&lt;/p&gt;
+
+&lt;p&gt;よって，本記事には，前者をターゲットにして紹介する．&lt;/p&gt;
+
+&lt;h3 id=&quot;超解像技術の理論的記述&quot;&gt;超解像技術の理論的記述&lt;/h3&gt;
+
+&lt;p&gt;この部分の記述はGoogleが2016年に発表した文献&lt;sup id=&quot;fnref:Google&quot;&gt;&lt;a href=&quot;#fn:Google&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;を参考したもの．PS:その実現コードはGithub上にある．&lt;sup id=&quot;fnref:RAISRCode&quot;&gt;&lt;a href=&quot;#fn:RAISRCode&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Single Image Super Resolution (SISR) is the process of estimating a High-Resolution (HR) version of a Low-Resolution (LR) input image. This is a well-studied problem, which comes up in practice in many applications, such as zoom-in of still and text images, conversion of LR images/videos to high definition screens, and more. The linear degradation model of the SISR problem is formulated by&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;z = D_sHx&lt;/script&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;単一画像超解像技術は式(1)のような単純線形変換で表せる．低解像度画像&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;は求めたい高解像度画像&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;をblur演算子&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;でぼかした後，ダウンサンプリング演算子&lt;script type=&quot;math/tex&quot;&gt;D_s&lt;/script&gt;で求められる．&lt;/p&gt;
+
+&lt;p&gt;ここでの考察は3つある．&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;ぼかし演算子&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;の必要性：低解像度画像からの変換過程を整理してみると，フィルターなしでアップサンプリング後，必然的に，エッジ部分が近傍補完のせいで隣接画素間の変化が穏やかになる．言い換えると，画像の周波数が低くなり，視覚的にぼけた画像に見える．ということで，ぼかし演算子&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;をダウンサンプリング演算子&lt;script type=&quot;math/tex&quot;&gt;D_s&lt;/script&gt;から独立させたことこそ，処理プロセスがより明確になるわけ．&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;実画像と理論モデルの差：式(1)で述べた超解像技術は線形計算に従う変化であるが，実際には，Raw画像以外に，圧縮したものを入力画像として使用する場合も十分考えられる．これも非線形構造の離散データである可能性が高い．更に，漫画の線画や会社logoのような構造不明(線形？非線形？領域ごと混合？)な状況も珍しくない．ここで，その差異をノイズとして導入し，次の式に化するべきではないかと思われる．&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = D_sHx+n&lt;/script&gt;
+
+&lt;p&gt;ここで&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;はノイズを表す．&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;式(2)からわかることは，複数の高解像度画像が同一の低解像度画像に対応している．つまり，低解像度画像から正解(真)の高画質画像を確定的に求めることが不可能である．よって結果の客観評価方式自体が一種の課題にもなる．(主観評価依存)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;超解像技術と画像圧縮の関係性&quot;&gt;超解像技術と画像圧縮の関係性&lt;/h2&gt;
+
+&lt;p&gt;今まで，超解像技術の概要を簡単に述べたが，実際に超解像技術を画像圧縮に使うとどうだろう？例えば，超解像で解像度を自由にいじれるのなら，低解像度画像で通信すれば十分ではないかと思われるだろう．つまり，下の図に示すように，画像を圧縮⇨伝送⇨展開を経て通信を行う上段過程に対して，下段には超解像を利用し，低解像度化と超解像を既存過程の両端に追加するアプローチを示している．&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/CompressionMethod.png&quot; alt=&quot;CompressionMethod&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ここに考えられる超解像ルートのメリットは二つ（が，本質は一緒），&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;既存ルートと同じ通信量でほぼ原画画質の低解像度画像を送信可能&lt;/li&gt;
+  &lt;li&gt;既存ルートと同じ圧縮率の低解像度画像を送信することで，&lt;script type=&quot;math/tex&quot;&gt;1/k&lt;/script&gt; まで通信情報量を削減&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;１の方は結果画質のみ比較を要するに対し，２の方では，通信量の削減率および結果画質の低下率両方のトレードオフを評価する必要がある．まして，どちらの方も，超解像で増えた計算コストの評価も行なうともっと良い．なお，画質評価について，超解像技術はあくまでも，欠損情報を推測する手法に過ぎない，客観評価指標として，PSNRを用いると不利な局面に落ちるだろう．代わりに，MS-SSIM&lt;sup id=&quot;fnref:msssim&quot;&gt;&lt;a href=&quot;#fn:msssim&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;や主観評価(MOS)を導入すると説得力があると考えられる．&lt;/p&gt;
+
+&lt;p&gt;よって実験設計は以下となる：&lt;/p&gt;
+
+&lt;p&gt;実験A：既存ルートと同じ通信量で低解像度画像を送信する実験&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;実験内容と条件&lt;/th&gt;
+      &lt;th&gt;パラメータ或いはメソット&lt;/th&gt;
+      &lt;th&gt;注釈&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;既存手法の前提実験&lt;/td&gt;
+      &lt;td&gt;4つから5つの圧縮率で行う&lt;/td&gt;
+      &lt;td&gt;各条件下の情報量(&lt;script type=&quot;math/tex&quot;&gt;R_{ref}&lt;/script&gt;)と結果画像(&lt;script type=&quot;math/tex&quot;&gt;I_{ref}&lt;/script&gt;)を記録&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;実験画像をダウンサンプリング&lt;/td&gt;
+      &lt;td&gt;単純間引き/平均値/重み付き平均値&lt;/td&gt;
+      &lt;td&gt;メソットによる誤差は少ないが，単純間引きを優先的に実験し，余裕あれば多手法試行．処理時間は恐らく無視できる範疇だが，記録しておこう&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;既存手法と同じ方式で圧縮&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;R_{ref}&lt;/script&gt;に近づくように圧縮率を制限&lt;/td&gt;
+      &lt;td&gt;情報量&lt;script type=&quot;math/tex&quot;&gt;R_{A}&lt;/script&gt;を記録&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;超解像&lt;/td&gt;
+      &lt;td&gt;GoogleのRAISR&lt;sup id=&quot;fnref:Google:1&quot;&gt;&lt;a href=&quot;#fn:Google&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; を始め，2つ以上の手法を試行．Bicubicでも追加&lt;/td&gt;
+      &lt;td&gt;処理時間を記録&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;画質評価&lt;/td&gt;
+      &lt;td&gt;MS-SSIM と主観評価&lt;/td&gt;
+      &lt;td&gt;最後にRD曲線図を作成&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:8k&quot;&gt;
+      &lt;p&gt;(Sharp 8K) http://www.sharp.co.jp/aquos/sharp8k/&amp;nbsp;&lt;a href=&quot;#fnref:8k&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:survey&quot;&gt;
+      &lt;p&gt;(サーベイ論文) https://link.springer.com/article/10.1007/s00138-014-0623-4&amp;nbsp;&lt;a href=&quot;#fnref:survey&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:sony&quot;&gt;
+      &lt;p&gt;(Sonyの紹介ページ) https://www.sony.jp/msc/enjoy/products/feature/20141106/&amp;nbsp;&lt;a href=&quot;#fnref:sony&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:toshiba&quot;&gt;
+      &lt;p&gt;(Toshibaの紹介ページ) http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm&amp;nbsp;&lt;a href=&quot;#fnref:toshiba&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:fujitsu&quot;&gt;
+      &lt;p&gt;(Fujitsuの紹介ページ) http://www.fmworld.net/product/phone/f-01j/display.html&amp;nbsp;&lt;a href=&quot;#fnref:fujitsu&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:mitsubishi&quot;&gt;
+      &lt;p&gt;(Mitsubishiの紹介ページ) http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html&amp;nbsp;&lt;a href=&quot;#fnref:mitsubishi&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:Google&quot;&gt;
+      &lt;p&gt;(RAISR: Rapid and Accurate Image Super Resolution) https://www.arxiv-vanity.com/papers/1606.01299/&amp;nbsp;&lt;a href=&quot;#fnref:Google&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:Google:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:RAISRCode&quot;&gt;
+      &lt;p&gt;(A Python implementation of RAISR) https://github.com/movehand/raisr&amp;nbsp;&lt;a href=&quot;#fnref:RAISRCode&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:msssim&quot;&gt;
+      &lt;p&gt;(Multiscale structural similarity for image quality assessment) https://ieeexplore.ieee.org/document/1292216/&amp;nbsp;&lt;a href=&quot;#fnref:msssim&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Ji Wang</name></author><category term="Image_Coding," /><category term="Super_Resolution" /><summary type="html">まえがき</summary></entry><entry><title type="html">MACOSでLATEXを使う</title><link href="http://localhost:4000/tutorial/2018/06/11/UseLatexInMacOS/" rel="alternate" type="text/html" title="MACOSでLATEXを使う" /><published>2018-06-11T00:00:00+09:00</published><updated>2018-06-11T00:00:00+09:00</updated><id>http://localhost:4000/tutorial/2018/06/11/UseLatexInMacOS</id><content type="html" xml:base="http://localhost:4000/tutorial/2018/06/11/UseLatexInMacOS/">&lt;h2 id=&quot;まえがき&quot;&gt;まえがき&lt;/h2&gt;
+
+&lt;p&gt;とある理由でWindowsユーザーからMacユーザーへ転身したので，MacOSで論文作成環境“LaTeX”の構築手順を記録する．(MS Officeに関しては，余りにも言うことが少なくて割愛する．)&lt;/p&gt;
+
+&lt;h2 id=&quot;マシン環境&quot;&gt;マシン環境&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/2018-06-11 16.07.42.png&quot; alt=&quot;2018-06-11 16.07.42&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Macbook pro (13-inch, 2016 Late with Touch Bar)&lt;/li&gt;
+  &lt;li&gt;CPU: 2.9 GHz Intel Core i5&lt;/li&gt;
+  &lt;li&gt;Memory: 8GB DDR3&lt;/li&gt;
+  &lt;li&gt;Graphic Chip: Intel Iris Graphics 550&lt;/li&gt;
+  &lt;li&gt;OS: macOS High Sierra(10.13.5)&lt;/li&gt;
+  &lt;li&gt;Main Language: Chinese (Mainland Simplified)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;appの用意&quot;&gt;APPの用意&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://tug.org/mactex/&quot;&gt;&lt;strong&gt;MacTeX&lt;/strong&gt;&lt;/a&gt;：MacTeXはTeXLiveをMac向けにパッケージ化したもの．&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.texpad.com/&quot;&gt;&lt;strong&gt;Texpad&lt;/strong&gt;&lt;/a&gt;：TexpadはGUI付きLaTeXエディターで，有料ではあるが，優れているもの．PS：Mac Storeで購入より，ホームページから購入する方が安い．&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.texpad.com/static/images/news/sawtooth-18.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;iframe src=&quot;https://player.vimeo.com/video/231354048&quot; width=&quot;640&quot; height=&quot;388&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;texpadの設定&quot;&gt;Texpadの設定&lt;/h2&gt;
+
+&lt;h3 id=&quot;日本語設定&quot;&gt;日本語設定&lt;/h3&gt;
+
+&lt;p&gt;TexpadのタイプセッターをpLaTeXにする．タイプセッティングエンジンを「pLaTeX→dvipdfmx」に変更することで日本語LaTeX2eが通るようになる．&lt;/p&gt;
+
+&lt;h2 id=&quot;texpadのメリット&quot;&gt;Texpadのメリット&lt;/h2&gt;
+
+&lt;h3 id=&quot;todoでメモる&quot;&gt;TODOでメモる&lt;/h3&gt;
+
+&lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;%TODO:こうやって，メモが書ける_φ(･_･&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/屏幕快照 2018-06-11 16.36.23.png&quot; alt=&quot;屏幕快照 2018-06-11 16.36.23&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;サイドバーから目次を見える&quot;&gt;サイドバーから目次を見える&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/屏幕快照 2018-06-11 16.37.52.png&quot; alt=&quot;屏幕快照 2018-06-11 16.37.52&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ページ数が多くなるほど，この機能を欲しくなるだろう．&lt;/p&gt;
+
+&lt;h3 id=&quot;コマンド自動補完&quot;&gt;コマンド自動補完&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figs/屏幕快照 2018-06-11 16.41.24.png&quot; alt=&quot;屏幕快照 2018-06-11 16.41.24&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;有る無しだけで世界が変わる．&lt;/p&gt;
+
+&lt;h3 id=&quot;latexマクロ&quot;&gt;LaTeXマクロ&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://qiita.com/exilias/items/70696e9e8dd65e4b7eb9&quot;&gt; @exilias&lt;/a&gt;さんの記事から学んだもの，勉強になった．&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;\newcommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;\memo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;[1]&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;\textcolor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;red&lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;memo:#1&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\newcommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;\newsentence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;[1]&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;\textcolor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;blue&lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;#1&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\newcommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;\reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;[1]&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;\textcolor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;magenta&lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;#1&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\memo{メモ内容}&lt;/code&gt;は先生や共著者と相談したいことなどをよく書きます．また，&lt;code class=&quot;highlighter-rouge&quot;&gt;\newsentence{新しく追加した内容}&lt;/code&gt;は新たに追加した文章をよくこれでマーキングして，先生にチェックしてもらう時の目印にしたりします．&lt;code class=&quot;highlighter-rouge&quot;&gt;\reduce{削るかもしれない内容}&lt;/code&gt;は国際学会のフルペーパーはよく「USレターサイズで10ページまで」などと内容量の規定があったりするので，削り代はこのコマンドで括ったりすると便利です．そして，&lt;code class=&quot;highlighter-rouge&quot;&gt;\newcommand{\reduce}[1]{\textcolor{magenta}{#1}}&lt;/code&gt;これを&lt;code class=&quot;highlighter-rouge&quot;&gt;\newcommand{\reduce}[1]{\textcolor{magenta}{}}&lt;/code&gt;（#1を消す）にすることで，エディタ内の文章をわざわざコメントアウトすること無しに最終的なPDFから削除することができます．分量調整に便利です．&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以上引用させていただいた．&lt;/p&gt;
+
+&lt;h2 id=&quot;おわりに&quot;&gt;おわりに&lt;/h2&gt;
+
+&lt;p&gt;その一，LaTeXで論文を書いて共著者にPDFと共に送ったら，向こうがWordユーザーの可能性が高い，この時には，&lt;a href=&quot;https://pandoc.org/&quot;&gt;Pandoc&lt;/a&gt;でできるだけWordに変換したこともしばしばある．&lt;/p&gt;
+
+&lt;p&gt;その二，LaTeXは論文作成に便利なツールであるが，正直に言うと，日常の文書作成やメモ，日記類には向かない．&lt;/p&gt;
+
+&lt;p&gt;Wordと比べると，事前の環境構築に時間コストが高い，文法の勉強コストも低くない，代わりに，Gitとかでのバージョン管理が簡単で，文字編集に集中しやすくてコンテンツの組版を無視できる楽しさがある．&lt;/p&gt;
+
+&lt;p&gt;その三，現代の高速ペース生活においては，Wordでも，LaTeXでも，「提供機能»需要機能」で使いづらい．代わりに，近年流行ったMarkdownの方が使いやすい．Githubでこの記事を書く際に使うAppもTyporaというMarkdownのエディターである．&lt;/p&gt;</content><author><name>Ji Wang</name></author><category term="LaTeX," /><category term="Texpad" /><summary type="html">まえがき</summary></entry><entry><title type="html">Next Theme Tutorial</title><link href="http://localhost:4000/manual/2017/07/20/next-tutorial/" rel="alternate" type="text/html" title="Next Theme Tutorial" /><published>2017-07-20T00:00:00+09:00</published><updated>2017-07-20T00:00:00+09:00</updated><id>http://localhost:4000/manual/2017/07/20/next-tutorial</id><content type="html" xml:base="http://localhost:4000/manual/2017/07/20/next-tutorial/">&lt;blockquote&gt;
+  &lt;p&gt;NexT is a high quality elegant &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme ported from &lt;a href=&quot;https://github.com/iissnan/hexo-theme-next&quot;&gt;Hexo Next&lt;/a&gt;. It is crafted from scratch, with love.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://simpleyyt.github.io/jekyll-theme-next/&quot;&gt;Live Preview&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Desktop
+&lt;img src=&quot;http://iissnan.com/nexus/next/desktop-preview.png&quot; alt=&quot;Desktop Preview&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sidebar&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/desktop-sidebar-preview.png&quot; alt=&quot;Desktop Sidebar Preview&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sidebar (Post details page)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/desktop-sidebar-toc.png&quot; alt=&quot;Desktop Sidebar Preview&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mobile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/mobile.png&quot; alt=&quot;Mobile Preview&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Check whether you have &lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.1.0&lt;/code&gt; or higher installed:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Install &lt;code class=&quot;highlighter-rouge&quot;&gt;Bundler&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundler
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Clone Jacman theme:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/Simpleyyt/jekyll-theme-next.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-theme-next
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Install Jekyll and other dependencies from the GitHub Pages gem:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run your Jekyll site locally:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;More Details：&lt;a href=&quot;https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/&quot;&gt;Setting up your GitHub Pages site locally with Jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
+
+&lt;h3 id=&quot;multiple-languages-support-including-english--russian--french--german--simplified-chinese--traditional-chinese&quot;&gt;Multiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese.&lt;/h3&gt;
+
+&lt;p&gt;Default language is English.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;en&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# language: zh-Hans&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# language: fr-FR&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# language: zh-hk&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# language: zh-tw&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# language: ru&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# language: de&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Set &lt;code class=&quot;highlighter-rouge&quot;&gt;language&lt;/code&gt; field as following in site &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to change to Chinese.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;zh-Hans&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;comment-support&quot;&gt;Comment support.&lt;/h3&gt;
+
+&lt;p&gt;NexT has native support for &lt;code class=&quot;highlighter-rouge&quot;&gt;DuoShuo&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Disqus&lt;/code&gt; comment systems.&lt;/p&gt;
+
+&lt;p&gt;Add the following snippets to your &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;duoshuo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;enable&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-duoshuo-shortname&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;disqus_shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-disqus-shortname&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;social-media&quot;&gt;Social Media&lt;/h3&gt;
+
+&lt;p&gt;NexT can automatically add links to your Social Media accounts:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;social&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-github-url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;Twitter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-twitter-url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;Weibo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-weibo-url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;DouBan&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-douban-url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;ZhiHu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-zhihu-url&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;feed-link&quot;&gt;Feed link.&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Show a feed link.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Set &lt;code class=&quot;highlighter-rouge&quot;&gt;rss&lt;/code&gt; field in theme’s &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;, as the following value:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rss: false&lt;/code&gt; will totally disable feed link.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rss:  &lt;/code&gt; use sites’ feed link. This is the default option.&lt;/p&gt;
+
+    &lt;p&gt;Follow the installation instruction in the plugin’s README. After the configuration is done for this plugin, the feed link is ready too.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rss: http://your-feed-url&lt;/code&gt; set specific feed link.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;up-to-5-code-highlight-themes-built-in&quot;&gt;Up to 5 code highlight themes built-in.&lt;/h3&gt;
+
+&lt;p&gt;NexT uses &lt;a href=&quot;https://github.com/chriskempson/tomorrow-theme&quot;&gt;Tomorrow Theme&lt;/a&gt; with 5 themes for you to choose from.
+Next use &lt;code class=&quot;highlighter-rouge&quot;&gt;normal&lt;/code&gt; by default. Have a preview about &lt;code class=&quot;highlighter-rouge&quot;&gt;normal&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;night&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/tomorrow-normal.png&quot; alt=&quot;Tomorrow Normal Preview&quot; /&gt;
+&lt;img src=&quot;http://iissnan.com/nexus/next/tomorrow-night.png&quot; alt=&quot;Tomorrow Night Preview&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Head over to &lt;a href=&quot;https://github.com/chriskempson/tomorrow-theme&quot;&gt;Tomorrow Theme&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuration&quot;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;NexT comes with few configurations.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# Menu configuration.&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;menu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;archives&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/archives&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Favicon&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;favicon&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/favicon.ico&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Avatar (put the image into next/source/images/)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..)&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/default_avatar.png&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Code highlight theme&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# available: normal | night | night eighties | night blue | night bright&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;highlight_theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;normal&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Fancybox for image gallery&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;fancybox&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Specify the date when the site was setup&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;since&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2013&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;browser-support&quot;&gt;Browser support&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/browser-support.png&quot; alt=&quot;Browser support&quot; /&gt;&lt;/p&gt;</content><author><name>Ji Wang</name></author><summary type="html">NexT is a high quality elegant Jekyll theme ported from Hexo Next. It is crafted from scratch, with love. Live Preview Screenshots Desktop Sidebar Sidebar (Post details page) Mobile Installation Check whether you have Ruby 2.1.0 or higher installed: ruby --version Install Bundler: gem install bundler Clone Jacman theme: git clone https://github.com/Simpleyyt/jekyll-theme-next.git cd jekyll-theme-next Install Jekyll and other dependencies from the GitHub Pages gem: bundle install Run your Jekyll site locally: bundle exec jekyll server More Details：Setting up your GitHub Pages site locally with Jekyll Features Multiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese. Default language is English. language: en # language: zh-Hans # language: fr-FR # language: zh-hk # language: zh-tw # language: ru # language: de Set language field as following in site _config.yml to change to Chinese. language: zh-Hans Comment support. NexT has native support for DuoShuo and Disqus comment systems. Add the following snippets to your _config.yml: duoshuo: enable: true shortname: your-duoshuo-shortname OR disqus_shortname: your-disqus-shortname Social Media NexT can automatically add links to your Social Media accounts: social: GitHub: your-github-url Twitter: your-twitter-url Weibo: your-weibo-url DouBan: your-douban-url ZhiHu: your-zhihu-url Feed link. Show a feed link. Set rss field in theme’s _config.yml, as the following value: rss: false will totally disable feed link. rss: use sites’ feed link. This is the default option. Follow the installation instruction in the plugin’s README. After the configuration is done for this plugin, the feed link is ready too. rss: http://your-feed-url set specific feed link. Up to 5 code highlight themes built-in. NexT uses Tomorrow Theme with 5 themes for you to choose from. Next use normal by default. Have a preview about normal and night: Head over to Tomorrow Theme for more details. Configuration NexT comes with few configurations. # Menu configuration. menu: home: / archives: /archives # Favicon favicon: /favicon.ico # Avatar (put the image into next/source/images/) # can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..) avatar: /default_avatar.png # Code highlight theme # available: normal | night | night eighties | night blue | night bright highlight_theme: normal # Fancybox for image gallery fancybox: true # Specify the date when the site was setup since: 2013 Browser support</summary></entry><entry><title type="html">Highlight Test</title><link href="http://localhost:4000/test/2017/07/19/highlight-test/" rel="alternate" type="text/html" title="Highlight Test" /><published>2017-07-19T00:00:00+09:00</published><updated>2017-07-19T00:00:00+09:00</updated><id>http://localhost:4000/test/2017/07/19/highlight-test</id><content type="html" xml:base="http://localhost:4000/test/2017/07/19/highlight-test/">&lt;p&gt;This is a highlight test.&lt;/p&gt;
+
+&lt;h1 id=&quot;normal-block&quot;&gt;Normal block&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alert('Hello World!');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;print 'helloworld'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;highlight-block&quot;&gt;Highlight block&lt;/h1&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hello, world!'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'helloworld'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'foo'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'foo'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'foo'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Ji Wang</name></author><summary type="html">This is a highlight test. Normal block alert('Hello World!'); print 'helloworld' Highlight block alert( 'Hello, world!' ); print 'helloworld' def foo puts 'foo' end def foo puts 'foo' end 1 2 3def foo puts 'foo' end #include &amp;lt;iostream&amp;gt; using namespace std; void foo(int arg1, int arg2) { } int main() { string str; foo(1, 2); cout &amp;lt;&amp;lt; &quot;Hello World&quot; &amp;lt;&amp;lt; endl; return 0; }</summary></entry><entry><title type="html">Emoji Test</title><link href="http://localhost:4000/2015/09/19/emoji-test/" rel="alternate" type="text/html" title="Emoji Test" /><published>2015-09-19T00:00:00+09:00</published><updated>2015-09-19T00:00:00+09:00</updated><id>http://localhost:4000/2015/09/19/emoji-test</id><content type="html" xml:base="http://localhost:4000/2015/09/19/emoji-test/">&lt;p&gt;This is an emoji test. :smile: lol.&lt;/p&gt;
+
+&lt;p&gt;See emoji cheat sheet for more detail :wink: : &lt;a href=&quot;https://www.webpagefx.com/tools/emoji-cheat-sheet/&quot;&gt;https://www.webpagefx.com/tools/emoji-cheat-sheet/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;:bowtie::smile::laughing::blush::smiley::relaxed::smirk:
+:heart_eyes::kissing_heart::kissing_closed_eyes::flushed::relieved::satisfied::grin:&lt;/p&gt;</content><author><name>Ji Wang</name></author><summary type="html">This is an emoji test. :smile: lol.</summary></entry><entry><title type="html">Gallery Post</title><link href="http://localhost:4000/photo/2014/11/19/gallery-post/" rel="alternate" type="text/html" title="Gallery Post" /><published>2014-11-19T00:45:20+09:00</published><updated>2014-11-19T00:45:20+09:00</updated><id>http://localhost:4000/photo/2014/11/19/gallery-post</id><content type="html" xml:base="http://localhost:4000/photo/2014/11/19/gallery-post/">&lt;p&gt;Nunc dignissim volutpat enim, non sollicitudin purus dignissim id. Nam sit amet urna eu velit lacinia eleifend. Proin auctor rhoncus ligula nec aliquet. Donec sodales molestie lacinia. Curabitur dictum faucibus urna at convallis. Aliquam in lectus at urna rutrum porta. In lacus arcu, molestie ut vestibulum ut, rhoncus sed eros. Sed et elit vitae risus pretium consectetur vel in mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus turpis quis lectus rhoncus adipiscing. Proin pulvinar placerat suscipit. Maecenas imperdiet, quam vitae varius auctor, enim mauris vulputate sapien, nec laoreet neque diam non quam.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/81b78497jw1emfgts2pt4j21hc0u0k1c.jpg&quot; alt=&quot;Wallbase - dgnfly (wallbase.cc/wallpaper/1384450)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Etiam luctus mauris at mi sollicitudin quis malesuada nibh porttitor. Vestibulum non dapibus magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin feugiat hendrerit viverra. Phasellus sit amet nunc mauris, eu ultricies tellus. Sed a mi tortor, eleifend varius erat. Proin consectetur molestie tortor eu gravida. Cras placerat orci id arcu tristique ut rutrum justo pulvinar. Maecenas lacinia fringilla diam non bibendum. Aenean vel viverra turpis. Integer ut leo nisi. Pellentesque vehicula quam ut sapien convallis consequat. Aliquam ut arcu purus, eget tempor purus. Integer eu tellus quis erat tristique gravida eu vel lorem.&lt;/p&gt;</content><author><name>Ji Wang</name></author><category term="Photo" /><category term="test" /><summary type="html">Nunc dignissim volutpat enim, non sollicitudin purus dignissim id. Nam sit amet urna eu velit lacinia eleifend. Proin auctor rhoncus ligula nec aliquet. Donec sodales molestie lacinia. Curabitur dictum faucibus urna at convallis. Aliquam in lectus at urna rutrum porta. In lacus arcu, molestie ut vestibulum ut, rhoncus sed eros. Sed et elit vitae risus pretium consectetur vel in mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus turpis quis lectus rhoncus adipiscing. Proin pulvinar placerat suscipit. Maecenas imperdiet, quam vitae varius auctor, enim mauris vulputate sapien, nec laoreet neque diam non quam.</summary></entry><entry><title type="html">Images</title><link href="http://localhost:4000/2013/12/27/images/" rel="alternate" type="text/html" title="Images" /><published>2013-12-27T07:46:49+09:00</published><updated>2013-12-27T07:46:49+09:00</updated><id>http://localhost:4000/2013/12/27/images</id><content type="html" xml:base="http://localhost:4000/2013/12/27/images/">&lt;p&gt;This is a image test post.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/81b78497jw1emfgwkasznj21hc0u0qb7.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/mw690/81b78497jw1emfgwjrh2pj21hc0u01g3.jpg&quot; alt=&quot;Caption&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/mw690/81b78497jw1emfgwil5xkj21hc0u0tpm.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://placehold.it/350x150.jpg&quot; alt=&quot;Small Picture&quot; /&gt;&lt;/p&gt;</content><author><name>Ji Wang</name></author><summary type="html">This is a image test post.</summary></entry><entry><title type="html">Excerpts</title><link href="http://localhost:4000/2013/12/25/excerpts/" rel="alternate" type="text/html" title="Excerpts" /><published>2013-12-25T09:23:23+09:00</published><updated>2013-12-25T09:23:23+09:00</updated><id>http://localhost:4000/2013/12/25/excerpts</id><content type="html" xml:base="http://localhost:4000/2013/12/25/excerpts/">&lt;p&gt;The following contents should be invisible in home/archive page.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae velit eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Aliquam eleifend dolor vitae libero pharetra adipiscing. Etiam adipiscing dolor a quam tempor, eu convallis nulla varius. Aliquam sollicitudin risus a porta aliquam. Ut nec velit dolor. Proin eget leo lobortis, aliquam est sed, mollis mauris. Fusce vitae leo pretium massa accumsan condimentum. Fusce malesuada gravida lectus vel vulputate. Donec bibendum porta nibh ut aliquam.&lt;/p&gt;
+
+&lt;p&gt;Sed lorem felis, congue non fringilla eu, aliquam eu eros. Curabitur orci libero, mollis sed semper vitae, adipiscing in lectus. Aenean non egestas odio. Donec sollicitudin nisi quis lorem gravida, in pharetra mauris fringilla. Duis sit amet faucibus dolor, id aliquam neque. In egestas, odio gravida tempor dictum, mauris felis faucibus purus, sit amet commodo lacus diam vitae est. Ut ut quam eget massa semper sodales. Aenean non ipsum cursus, blandit lectus in, ornare odio. Curabitur ultrices porttitor vulputate.&lt;/p&gt;</content><author><name>Ji Wang</name></author><category term="test" /><summary type="html">The following contents should be invisible in home/archive page.</summary></entry></feed>

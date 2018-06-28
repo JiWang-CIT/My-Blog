@@ -1,0 +1,1048 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Image_Coding,,Super_Resolution," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ji Wang' Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="この記事は，超解像技術を簡単に紹介し，その技術を画像圧縮への応用方法を議論する．">
+<meta name="keywords" content="Image_Coding,, Super_Resolution">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超解像技術の画像圧縮への応用">
+<meta property="og:url" content="http://localhost:4000/tutorial/note/2018/06/13/SuperResolutionForImageCompression/">
+<meta property="og:site_name" content="Ji Wang' Blog">
+<meta property="og:description" content="この記事は，超解像技術を簡単に紹介し，その技術を画像圧縮への応用方法を議論する．">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="/figs/CompressionMethod.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="超解像技術の画像圧縮への応用">
+<meta name="twitter:description" content="この記事は，超解像技術を簡単に紹介し，その技術を画像圧縮への応用方法を議論する．">
+<meta name="twitter:image" content="/figs/CompressionMethod.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>超解像技術の画像圧縮への応用 | Ji Wang' Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ji Wang' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">個人的呟き</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/tutorial/note/2018/06/13/SuperResolutionForImageCompression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ji Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/boy.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ji Wang' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            超解像技術の画像圧縮への応用
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-13T00:00:00+09:00">
+                2018-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Tutorial" itemprop="url" rel="index">
+                    <span itemprop="name">Tutorial</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Note" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    この記事は，超解像技術を簡単に紹介し，その技術を画像圧縮への応用方法を議論する．
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="まえがき">まえがき</h2>
+
+<p>画像や映像コンテンツには膨大な情報量が存在する．しかも，その情報量は画像解像度の増加(Full HD/2K⇨4K⇨8K)とともに指数倍数で増えていく．近年，画像処理やコンピュータビジョン，人工知能分野で，高解像度画像コンテンツの需要が高まってきている．この情勢につれて，低解像度画像を高解像度画像に変換する超解像技術も注目されている．</p>
+
+<p>この記事は，超解像技術を簡単に紹介し，その技術を画像圧縮への応用方法を議論する．</p>
+
+<h2 id="超解像技術の概要">超解像技術の概要</h2>
+
+<p>単刀直入に言うと，「超解像」とは，画像の空間的解像度を上げるという意味である．例えば，Full HD解像度(1920×1080)から4K解像度(3840×2160)に拡張する．</p>
+
+<h3 id="超解像技術の需要性">超解像技術の需要性</h3>
+
+<p>コンテンツの視点から言うと，解像度を上げることで，ディテールをより鮮明に見えるとか，同じ精度条件下でより広い視野を映れるメリットがある．宇宙探索や精密医療画像などのアプローチはともかく，セキュリティ監視画像や画像理解の応用にも役に立てる．</p>
+
+<p>技術進歩の立場からも，2018年現在，4K解像度はテレビやモニターのデフォルトスペックになり，ポータブル市場でも，4Kスクリーンを使用するスマートフォンや4K解像度をサポートするプロジェクターも売られている．更に，4Kに止まらず，コンシューマ向けの8Kテレビも上半期にリリースした<sup id="fnref:8k"><a href="#fn:8k" class="footnote">1</a></sup>. それに対して，既存コンテンツはFull HDがデフォルトで4Kや8Kコンテンツがまだ少ない．つまり，<strong>表示できる解像度が提供できる解像度より大きいという現実問題が存在する</strong>．</p>
+
+<p>コンテンツ視点からも，市場的需要の視点からも，既存低解像度画像を高解像度化にする需要が高いことがわかる．</p>
+
+<h3 id="超解像技術の分類">超解像技術の分類</h3>
+
+<p>ネット上に公開したサーベイ論文<sup id="fnref:survey"><a href="#fn:survey" class="footnote">2</a></sup>や関連記事<sup id="fnref:sony"><a href="#fn:sony" class="footnote">3</a></sup> <sup id="fnref:toshiba"><a href="#fn:toshiba" class="footnote">4</a></sup> <sup id="fnref:fujitsu"><a href="#fn:fujitsu" class="footnote">5</a></sup> <sup id="fnref:mitsubishi"><a href="#fn:mitsubishi" class="footnote">6</a></sup>を読むと，超解像技術が多種多様に見えるが，根本的に二種類に分類できる．</p>
+
+<ol>
+  <li>対象画像のみを参照する超解像技術，通称：Single image super-resolution，image interpolationとも呼ばれる</li>
+  <li>対象画像以外に，ビッグデータや動画の場合に隣接フレームなども参考情報に取り入れ，超解像を行う技術，multi-frame super-resolutionと名付けられる．</li>
+</ol>
+
+<p>理論的に，二者のうち，後者の方が参考情報が多くて，より良いクオリティの処理結果が得られるが，アルゴリズムの複雑さや高い計算コストという理由で製品開発に応用しにくい．</p>
+
+<p>よって，本記事には，前者をターゲットにして紹介する．</p>
+
+<h3 id="超解像技術の理論的記述">超解像技術の理論的記述</h3>
+
+<p>この部分の記述はGoogleが2016年に発表した文献<sup id="fnref:Google"><a href="#fn:Google" class="footnote">7</a></sup>を参考したもの．PS:その実現コードはGithub上にある．<sup id="fnref:RAISRCode"><a href="#fn:RAISRCode" class="footnote">8</a></sup></p>
+
+<blockquote>
+  <p>Single Image Super Resolution (SISR) is the process of estimating a High-Resolution (HR) version of a Low-Resolution (LR) input image. This is a well-studied problem, which comes up in practice in many applications, such as zoom-in of still and text images, conversion of LR images/videos to high definition screens, and more. The linear degradation model of the SISR problem is formulated by</p>
+
+  <script type="math/tex; mode=display">z = D_sHx</script>
+
+</blockquote>
+
+<p>単一画像超解像技術は式(1)のような単純線形変換で表せる．低解像度画像<script type="math/tex">z</script>は求めたい高解像度画像<script type="math/tex">x</script>をblur演算子<script type="math/tex">H</script>でぼかした後，ダウンサンプリング演算子<script type="math/tex">D_s</script>で求められる．</p>
+
+<p>ここでの考察は3つある．</p>
+
+<ol>
+  <li>
+    <p>ぼかし演算子<script type="math/tex">H</script>の必要性：低解像度画像からの変換過程を整理してみると，フィルターなしでアップサンプリング後，必然的に，エッジ部分が近傍補完のせいで隣接画素間の変化が穏やかになる．言い換えると，画像の周波数が低くなり，視覚的にぼけた画像に見える．ということで，ぼかし演算子<script type="math/tex">H</script>をダウンサンプリング演算子<script type="math/tex">D_s</script>から独立させたことこそ，処理プロセスがより明確になるわけ．</p>
+  </li>
+  <li>
+    <p>実画像と理論モデルの差：式(1)で述べた超解像技術は線形計算に従う変化であるが，実際には，Raw画像以外に，圧縮したものを入力画像として使用する場合も十分考えられる．これも非線形構造の離散データである可能性が高い．更に，漫画の線画や会社logoのような構造不明(線形？非線形？領域ごと混合？)な状況も珍しくない．ここで，その差異をノイズとして導入し，次の式に化するべきではないかと思われる．</p>
+  </li>
+</ol>
+
+<script type="math/tex; mode=display">z = D_sHx+n</script>
+
+<p>ここで<script type="math/tex">n</script>はノイズを表す．</p>
+
+<ol>
+  <li>式(2)からわかることは，複数の高解像度画像が同一の低解像度画像に対応している．つまり，低解像度画像から正解(真)の高画質画像を確定的に求めることが不可能である．よって結果の客観評価方式自体が一種の課題にもなる．(主観評価依存)</li>
+</ol>
+
+<h2 id="超解像技術と画像圧縮の関係性">超解像技術と画像圧縮の関係性</h2>
+
+<p>今まで，超解像技術の概要を簡単に述べたが，実際に超解像技術を画像圧縮に使うとどうだろう？例えば，超解像で解像度を自由にいじれるのなら，低解像度画像で通信すれば十分ではないかと思われるだろう．つまり，下の図に示すように，画像を圧縮⇨伝送⇨展開を経て通信を行う上段過程に対して，下段には超解像を利用し，低解像度化と超解像を既存過程の両端に追加するアプローチを示している．</p>
+
+<p><img src="/figs/CompressionMethod.png" alt="CompressionMethod" /></p>
+
+<p>ここに考えられる超解像ルートのメリットは二つ（が，本質は一緒），</p>
+
+<ol>
+  <li>既存ルートと同じ通信量でほぼ原画画質の低解像度画像を送信可能</li>
+  <li>既存ルートと同じ圧縮率の低解像度画像を送信することで，<script type="math/tex">1/k</script> まで通信情報量を削減</li>
+</ol>
+
+<p>１の方は結果画質のみ比較を要するに対し，２の方では，通信量の削減率および結果画質の低下率両方のトレードオフを評価する必要がある．まして，どちらの方も，超解像で増えた計算コストの評価も行なうともっと良い．なお，画質評価について，超解像技術はあくまでも，欠損情報を推測する手法に過ぎない，客観評価指標として，PSNRを用いると不利な局面に落ちるだろう．代わりに，MS-SSIM<sup id="fnref:msssim"><a href="#fn:msssim" class="footnote">9</a></sup>や主観評価(MOS)を導入すると説得力があると考えられる．</p>
+
+<p>よって実験設計は以下となる：</p>
+
+<p>実験A：既存ルートと同じ通信量で低解像度画像を送信する実験</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>実験内容と条件</th>
+      <th>パラメータ或いはメソット</th>
+      <th>注釈</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>既存手法の前提実験</td>
+      <td>4つから5つの圧縮率で行う</td>
+      <td>各条件下の情報量(<script type="math/tex">R_{ref}</script>)と結果画像(<script type="math/tex">I_{ref}</script>)を記録</td>
+    </tr>
+    <tr>
+      <td>実験画像をダウンサンプリング</td>
+      <td>単純間引き/平均値/重み付き平均値</td>
+      <td>メソットによる誤差は少ないが，単純間引きを優先的に実験し，余裕あれば多手法試行．処理時間は恐らく無視できる範疇だが，記録しておこう</td>
+    </tr>
+    <tr>
+      <td>既存手法と同じ方式で圧縮</td>
+      <td><script type="math/tex">R_{ref}</script>に近づくように圧縮率を制限</td>
+      <td>情報量<script type="math/tex">R_{A}</script>を記録</td>
+    </tr>
+    <tr>
+      <td>超解像</td>
+      <td>GoogleのRAISR<sup id="fnref:Google:1"><a href="#fn:Google" class="footnote">7</a></sup> を始め，2つ以上の手法を試行．Bicubicでも追加</td>
+      <td>処理時間を記録</td>
+    </tr>
+    <tr>
+      <td>画質評価</td>
+      <td>MS-SSIM と主観評価</td>
+      <td>最後にRD曲線図を作成</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:8k">
+      <p>(Sharp 8K) http://www.sharp.co.jp/aquos/sharp8k/&nbsp;<a href="#fnref:8k" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:survey">
+      <p>(サーベイ論文) https://link.springer.com/article/10.1007/s00138-014-0623-4&nbsp;<a href="#fnref:survey" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:sony">
+      <p>(Sonyの紹介ページ) https://www.sony.jp/msc/enjoy/products/feature/20141106/&nbsp;<a href="#fnref:sony" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:toshiba">
+      <p>(Toshibaの紹介ページ) http://toshiba-mirai-kagakukan.jp/learn/sci_tech/tech_book/tec201310.htm&nbsp;<a href="#fnref:toshiba" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:fujitsu">
+      <p>(Fujitsuの紹介ページ) http://www.fmworld.net/product/phone/f-01j/display.html&nbsp;<a href="#fnref:fujitsu" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:mitsubishi">
+      <p>(Mitsubishiの紹介ページ) http://www.mitsubishielectric.co.jp/corporate/randd/spotlight/spotlight16.html&nbsp;<a href="#fnref:mitsubishi" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:Google">
+      <p>(RAISR: Rapid and Accurate Image Super Resolution) https://www.arxiv-vanity.com/papers/1606.01299/&nbsp;<a href="#fnref:Google" class="reversefootnote">&#8617;</a>&nbsp;<a href="#fnref:Google:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:RAISRCode">
+      <p>(A Python implementation of RAISR) https://github.com/movehand/raisr&nbsp;<a href="#fnref:RAISRCode" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:msssim">
+      <p>(Multiscale structural similarity for image quality assessment) https://ieeexplore.ieee.org/document/1292216/&nbsp;<a href="#fnref:msssim" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Image_Coding%2C" rel="tag"># Image_Coding,</a>
+          
+            
+            <a href="/tag/#/Super_Resolution" rel="tag"># Super_Resolution</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/tips/2018/06/26/ObtainDataFromFig/" rel="next" title="Figファイルからデータ取得">
+                <i class="fa fa-chevron-left"></i> Figファイルからデータ取得
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tutorial/2018/06/11/UseLatexInMacOS/" rel="prev" title="MACOSでLATEXを使う">
+                MACOSでLATEXを使う <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/boy.png"
+               alt="Ji Wang" />
+          <p class="site-author-name" itemprop="name">Ji Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">個人的呟き</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/JiWang-CIT" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#まえがき"> <span class="nav-number">1</span> <span class="nav-text">まえがき</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#超解像技術の概要"> <span class="nav-number">2</span> <span class="nav-text">超解像技術の概要</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#超解像技術の需要性"> <span class="nav-number">2.1</span> <span class="nav-text">超解像技術の需要性</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#超解像技術の分類"> <span class="nav-number">2.2</span> <span class="nav-text">超解像技術の分類</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#超解像技術の理論的記述"> <span class="nav-number">2.3</span> <span class="nav-text">超解像技術の理論的記述</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#超解像技術と画像圧縮の関係性"> <span class="nav-number">3</span> <span class="nav-text">超解像技術と画像圧縮の関係性</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ji Wang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+

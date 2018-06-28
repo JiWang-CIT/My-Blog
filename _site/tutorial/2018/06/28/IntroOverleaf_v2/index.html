@@ -1,0 +1,1061 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LaTeX,,OverLeaf," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ji Wang' Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにOverLeaf v2の使い方を勉強する．">
+<meta name="keywords" content="LaTeX,, OverLeaf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OverLeaf v2 での文書作成">
+<meta property="og:url" content="http://localhost:4000/tutorial/2018/06/28/IntroOverleaf_v2/">
+<meta property="og:site_name" content="Ji Wang' Blog">
+<meta property="og:description" content="好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにOverLeaf v2の使い方を勉強する．">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.filepicker.io/api/file/TPnpF9pXTOmAnle4ey0q">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OverLeaf v2 での文書作成">
+<meta name="twitter:description" content="好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにOverLeaf v2の使い方を勉強する．">
+<meta name="twitter:image" content="https://www.filepicker.io/api/file/TPnpF9pXTOmAnle4ey0q">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>OverLeaf v2 での文書作成 | Ji Wang' Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ji Wang' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">個人的呟き</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/tutorial/2018/06/28/IntroOverleaf_v2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ji Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/boy.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ji Wang' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            OverLeaf v2 での文書作成
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-28T00:00:00+09:00">
+                2018-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Tutorial" itemprop="url" rel="index">
+                    <span itemprop="name">Tutorial</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにOverLeaf v2の使い方を勉強する．
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="overleaf-v2とは">OverLeaf v2とは</h2>
+
+<p>一言でまとめると，オンラインで使える LaTeX 原稿執筆環境である．オフラインの環境構築は「時間」と「複雑」のクロスミックスにすぎないため，ネット環境が安定であれば，OverLeafを利用するのは好都合であろう．かつ，去年(2017)同じオンラインLaTeXサービスである(ShareLaTeX)を<a href="https://www.sharelatex.com/blog/2017/07/20/sharelatex-joins-overleaf.html">買収した</a>ので，両者の長所の融合となる<a href="https://www.overleaf.com/blog/641-try-out-overleaf-v2#.WzHXENgzZ24">OverLeaf v2</a>がオンラインLaTeX執筆の最善選択である．</p>
+
+<h2 id="オンラインでlatexする利点と欠点">オンラインでLaTeXする利点と欠点</h2>
+
+<h3 id="利点">利点</h3>
+
+<ul>
+  <li>環境構築が不要　◎</li>
+  <li>共同執筆がしやすい　○</li>
+  <li>バージョン管理しやすい　○</li>
+  <li>PCのシステムに問わない　△</li>
+</ul>
+
+<h3 id="欠点">欠点</h3>
+
+<ul>
+  <li>ネット環境依存　</li>
+  <li>セキュリティの懸念</li>
+  <li>Debugの不自由</li>
+  <li>容量制限</li>
+</ul>
+
+<h2 id="overleaf-v2で文章作成">OverLeaf v2で文章作成</h2>
+
+<p>好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにサービスの使い方を勉強する．</p>
+
+<blockquote>
+  <h3 id="powerful-collaboration-features">Powerful collaboration features</h3>
+
+  <p>– via overleaf blog</p>
+
+  <p>Overleaf v2 offers an impressive collection of new and upgraded collaboration features. The collaborative editing is faster and smoother than in Overleaf v1, and it shows you where your collaborators cursors are as they type. The new track changes mode lets you see exactly what has been changed by your collaborators, and allows you to accept or reject each individual change. You can also comment on ranges of text in your document for precise communication.</p>
+
+  <p><img src="https://www.filepicker.io/api/file/TPnpF9pXTOmAnle4ey0q" alt="collaboration" /></p>
+</blockquote>
+
+<p>まず，https://v2.overleaf.com/にアクセスしてサービスを起動する．beta版なので，現時点(2018/06/26)で Overleaf or ShareLaTeX のアカウントが必須，が，両者の既存プロジェクトが影響されないので，心配無用．</p>
+
+<h3 id="日本語文章作成">日本語文章作成</h3>
+
+<p>二つの方法を紹介する．一ツ目はXeLaTeXエンジン(コンパイラ)で文章作成する，もう一つは pLaTeX + dvipdf （≒ dvips + gs）という変換経路になり，日本で現在主流であろう．</p>
+
+<h4 id="xelatex-での日本語環境設定">XeLaTeX での日本語環境設定</h4>
+
+<ol>
+  <li>
+    <p>Blank Projectを作る</p>
+  </li>
+  <li>
+    <p>main.texの頭の部分(\documentclass{article}と\begin{document}の間)を以下のコードを入力する</p>
+
+    <div class="language-latex highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="k">\documentclass</span><span class="na">[a4paper]</span><span class="p">{</span>bxjsarticle<span class="p">}</span>
+   
+<span class="k">\usepackage</span><span class="p">{</span>fontspec<span class="p">}</span>
+<span class="k">\usepackage</span><span class="p">{</span>zxjatype<span class="p">}</span>
+   
+<span class="k">\setjamainfont</span><span class="p">{</span>ipam.ttf<span class="p">}</span>
+<span class="k">\setjasansfont</span><span class="p">{</span>ipag.ttf<span class="p">}</span>
+<span class="k">\setjamonofont</span><span class="p">{</span>ipag.ttf<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>
+    <p>「Menu」&gt; 「Settings」&gt; 「Compiler」から「XeLaTeX」に設定する</p>
+  </li>
+  <li>
+    <p>テンプレート[@ishigaki(https://qiita.com/ishigaki/items/8da80e4da3e2249a85f8)から</p>
+
+    <div class="language-latex highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48<br/>49<br/>50<br/>51<br/>52<br/>53<br/>54<br/>55<br/>56<br/>57<br/>58<br/>59</pre></td><td class="code"><pre class="highlight"><code><span class="c">%\documentclass[xelatex,ja=standard,a4paper]{bxjsarticle}</span>
+<span class="k">\documentclass</span><span class="na">[a4paper]</span><span class="p">{</span>bxjsreport<span class="p">}</span>
+<span class="c">%\documentclass[xelatex,a4paper,precisetext,noautoxspacing]{bxjsbook}</span>
+<span class="c">%</span>
+<span class="k">\usepackage</span><span class="p">{</span>fontspec<span class="p">}</span>
+<span class="k">\usepackage</span><span class="p">{</span>zxjatype<span class="p">}</span>
+<span class="c">%\usepackage{xltxtra}</span>
+<span class="k">\setjamainfont</span><span class="p">{</span>ipam.ttf<span class="p">}</span>
+<span class="k">\setjasansfont</span><span class="p">{</span>ipag.ttf<span class="p">}</span>
+<span class="k">\setjamonofont</span><span class="p">{</span>ipag.ttf<span class="p">}</span>
+   
+<span class="k">\usepackage</span><span class="p">{</span>amsmath,amssymb,amsfonts<span class="p">}</span>
+<span class="k">\usepackage</span><span class="p">{</span>bm<span class="p">}</span>
+<span class="k">\usepackage</span><span class="p">{</span>siunitx<span class="p">}</span>
+   
+<span class="k">\usepackage</span>[colorlinks=true, bookmarks=true,
+bookmarksnumbered=true, bookmarkstype=toc, linkcolor=blue,
+urlcolor=blue, citecolor=blue]<span class="p">{</span>hyperref<span class="p">}</span>
+   
+   
+<span class="k">\title</span><span class="p">{</span>平成XX年度修士論文<span class="k">\</span>XXに関する数値シミュレーション<span class="p">}</span>
+<span class="k">\author</span><span class="p">{</span>Hoge hoge<span class="p">}</span>
+<span class="k">\date</span><span class="p">{</span>平成31年2月<span class="p">}</span>
+   
+<span class="nt">\begin{document}</span>
+   
+<span class="k">\maketitle</span>
+   
+<span class="k">\include</span><span class="p">{</span>abstract<span class="p">}</span>
+   
+<span class="c">%% 目次</span>
+<span class="k">\tableofcontents</span>
+<span class="k">\listoffigures</span>
+<span class="k">\listoftables</span>
+   
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="c">%%%  本文</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+   
+<span class="k">\include</span><span class="p">{</span>introduction<span class="p">}</span>
+<span class="k">\include</span><span class="p">{</span>solution<span class="p">}</span>
+<span class="k">\include</span><span class="p">{</span>result<span class="p">}</span>
+<span class="k">\include</span><span class="p">{</span>conclusion<span class="p">}</span>
+   
+   
+   
+<span class="c">%% reference</span>
+<span class="nt">\begin{thebibliography}</span><span class="p">{</span>99<span class="p">}</span>
+<span class="k">\bibitem</span><span class="p">{</span>test1<span class="p">}</span> reference
+<span class="c">%\bibitem{test2} reference</span>
+<span class="c">%\bibitem{test3} reference</span>
+<span class="c">%</span>
+<span class="nt">\end{thebibliography}</span>
+   
+   
+<span class="k">\appendix</span>
+<span class="k">\chapter</span><span class="p">{</span>付録<span class="p">}</span>
+   
+<span class="nt">\end{document}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+</ol>
+
+<h4 id="platex-での日本語環境設定">pLaTeX での日本語環境設定</h4>
+
+<ol>
+  <li>
+    <p>Blank Projectを作る</p>
+  </li>
+  <li>
+    <p>「Menu」&gt; 「Settings」&gt; 「Compiler」から「LaTeX」に設定する</p>
+  </li>
+  <li>
+    <p>「New File」をクリック，「latexmkrc」のファイル名で以下の内容を入力</p>
+
+    <div class="language-latex highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></td><td class="code"><pre class="highlight"><code><span class="p">$</span><span class="nb">latex </span><span class="o">=</span><span class="nb"> 'platex';
+</span><span class="p">$</span>bibtex = 'pbibtex';
+<span class="p">$</span><span class="nb">dvipdf </span><span class="o">=</span><span class="nb"> 'dvipdfmx </span><span class="c">%O -o %D %S';</span><span class="nb">
+</span><span class="p">$</span>makeindex = 'mendex <span class="c">%O -o %D %S';</span>
+<span class="p">$</span><span class="nb">pdf</span><span class="p">_</span><span class="nb">mode </span><span class="o">=</span><span class="nb"> </span><span class="m">3</span><span class="nb">; 
+</span></code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>
+    <p>テンプレート</p>
+
+    <div class="language-latex highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15</pre></td><td class="code"><pre class="highlight"><code><span class="k">\documentclass</span><span class="na">[dvipdfmx,autodetect-engine]</span><span class="p">{</span>jsarticle<span class="p">}</span>
+   
+<span class="k">\title</span><span class="p">{</span>サンプル文書<span class="p">}</span>
+<span class="k">\author</span><span class="p">{</span>著者<span class="p">}</span>
+   
+<span class="nt">\begin{document}</span>
+<span class="k">\maketitle</span>
+   
+<span class="nt">\begin{abstract}</span>
+日本語を用いた文書を作成します。    
+<span class="nt">\end{abstract}</span>
+   
+<span class="k">\section</span><span class="p">{</span>はじめに<span class="p">}</span>
+   
+<span class="nt">\end{document}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>
+    <p>おまけ
+「jlreq.cls」を用いる例：<a href="https://v2.overleaf.com/read/xhrhnsnqwmgr">https://v2.overleaf.com/read/xhrhnsnqwmgr</a></p>
+  </li>
+</ol>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/LaTeX%2C" rel="tag"># LaTeX,</a>
+          
+            
+            <a href="/tag/#/OverLeaf" rel="tag"># OverLeaf</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tips/2018/06/26/ObtainDataFromFig/" rel="prev" title="Figファイルからデータ取得">
+                Figファイルからデータ取得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/boy.png"
+               alt="Ji Wang" />
+          <p class="site-author-name" itemprop="name">Ji Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">個人的呟き</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/JiWang-CIT" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#overleaf-v2とは"> <span class="nav-number">1</span> <span class="nav-text">OverLeaf v2とは</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#オンラインでlatexする利点と欠点"> <span class="nav-number">2</span> <span class="nav-text">オンラインでLaTeXする利点と欠点</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#利点"> <span class="nav-number">2.1</span> <span class="nav-text">利点</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#欠点"> <span class="nav-number">2.2</span> <span class="nav-text">欠点</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#overleaf-v2で文章作成"> <span class="nav-number">3</span> <span class="nav-text">OverLeaf v2で文章作成</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#powerful-collaboration-features"> <span class="nav-number">3.1</span> <span class="nav-text">Powerful collaboration features</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#日本語文章作成"> <span class="nav-number">3.2</span> <span class="nav-text">日本語文章作成</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#xelatex-での日本語環境設定"> <span class="nav-number">3.2.1</span> <span class="nav-text">XeLaTeX での日本語環境設定</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#platex-での日本語環境設定"> <span class="nav-number">3.2.2</span> <span class="nav-text">pLaTeX での日本語環境設定</span> </a> </li> </ol> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ji Wang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
