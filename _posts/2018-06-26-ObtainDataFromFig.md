@@ -12,7 +12,7 @@ tags: MATLAB, Code
 
 > MEMO：MATLABが2014bで一部のメソッドを変えた(追加？)したので，新しいバージョンでの操作のみを記録する．
 
-![MATLABfigFormat](/figs/MATLABfigFormat.png)
+![MATLABfigFormat](/My-Blog/figs/MATLABfigFormat.png)
 
 図(via [MATLAB official](https://jp.mathworks.com/help/matlab/learn_matlab/understanding-handle-graphics-objects.html))に示しているように，Figureオブジェクトに３通りの階層構造になる．これはグラフィックスプロット関数の種類によって異なる．今回は，一番多く使われる「plot」関数の場合を例(右手の構造)とする．
 
