@@ -1,6 +1,7 @@
 ---
 title: OverLeaf v2 での文書作成
 description: 好き嫌いはあるだろうが，オンラインの共同執筆がトレンドと信じるので，乗り遅れないようにOverLeaf v2の使い方を勉強する．
+date: 2018-06-26 14:37:08
 categories:
  - Tutorial
 tags: LaTeX, OverLeaf

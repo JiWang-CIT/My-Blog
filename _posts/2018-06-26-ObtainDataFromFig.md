@@ -1,6 +1,7 @@
 ---
 title: Figファイルからデータ取得
 description: MATLABのFigファイルからデータを取得する手法をメモ
+date: 2018-06-26 13:41:08
 categories:
  - Tips
 tags: MATLAB, Code
