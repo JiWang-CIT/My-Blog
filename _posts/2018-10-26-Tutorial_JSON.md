@@ -85,7 +85,7 @@ data = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]
 json = json.dumps(data)
 print json
 
-print json.dumps({'a': 'lakjf', 'b': 7}, sort_keys=True, indent=4, separators=(',', ': '))
+print json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(',', ': '))
 ```
 
 上記コードの実行結果は：
@@ -94,7 +94,7 @@ print json.dumps({'a': 'lakjf', 'b': 7}, sort_keys=True, indent=4, separators=('
 [{"a": 1, "c": 3, "b": 2, "e": 5, "d": 4}]
 {
     "a": "lakjf",
-    "b": 7
+    "b": 6
 }
 ```
 
@@ -113,22 +113,16 @@ json.dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_na
 ```python
 import json
 
-data = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]
+jsonData = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
-json = json.dumps(data)
-print json
-
-print json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(',', ': '))
+text = json.loads(jsonData)
+print text
 ```
 
 上記コードの実行結果は：
 
-```json
-[{"a": 1, "c": 3, "b": 2, "e": 5, "d": 4}]
-{
-    "a": "lakjf",
-    "b": 6
-}
+```python
+{'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
 ```
 
 
