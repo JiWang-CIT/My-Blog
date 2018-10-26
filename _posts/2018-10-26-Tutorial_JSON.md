@@ -54,7 +54,7 @@ JSONの文字コードはUTF-8となることで，どのプラットフォー�
 
 ## PythonでのJSON利用
 
-Pythonでは，JSON利用のためのpackageがある
+Pythonでは，JSON利用のためのpackageがある [URL](https://docs.python.jp/3/library/json.html)
 
 ``` python
 import json
@@ -72,7 +72,7 @@ import json
 文法：
 
 ```
-json.dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding="utf-8", default=None, sort_keys=False, **kw)
+json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
 ```
 
 使用例：
@@ -104,7 +104,7 @@ print (json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(
 文法：
 
 ```
-json.loads(s[, encoding[, cls[, object_hook[, parse_float[, parse_int[, parse_constant[, object_pairs_hook[, **kw]]]]]]]])
+json.loads(s, *, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
 ```
 
 使用例：
