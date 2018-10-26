@@ -85,7 +85,7 @@ data = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]
 json = json.dumps(data)
 print json
 
-print json.dumps({'a': 'Runoob', 'b': 7}, sort_keys=True, indent=4, separators=(',', ': '))
+print json.dumps({'a': 'lakjf', 'b': 7}, sort_keys=True, indent=4, separators=(',', ': '))
 ```
 
 上記コードの実行結果は：
@@ -93,7 +93,7 @@ print json.dumps({'a': 'Runoob', 'b': 7}, sort_keys=True, indent=4, separators=(
 ``` json
 [{"a": 1, "c": 3, "b": 2, "e": 5, "d": 4}]
 {
-    "a": "Runoob",
+    "a": "lakjf",
     "b": 7
 }
 ```
@@ -118,7 +118,7 @@ data = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]
 json = json.dumps(data)
 print json
 
-print json.dumps({'a': 'Runoob', 'b': 7}, sort_keys=True, indent=4, separators=(',', ': '))
+print json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(',', ': '))
 ```
 
 上記コードの実行結果は：
@@ -126,8 +126,8 @@ print json.dumps({'a': 'Runoob', 'b': 7}, sort_keys=True, indent=4, separators=(
 ```json
 [{"a": 1, "c": 3, "b": 2, "e": 5, "d": 4}]
 {
-    "a": "Runoob",
-    "b": 7
+    "a": "lakjf",
+    "b": 6
 }
 ```
 
@@ -137,7 +137,7 @@ print json.dumps({'a': 'Runoob', 'b': 7}, sort_keys=True, indent=4, separators=(
 
 PythonでのJSON利用について，`demjson`というサードパーティ製のpackageがある．公式サイトは　http://deron.meranda.us/python/demjson/
 
-### Quick example (code)
+### Quick example (code) via Official Site
 
 ```python
 >>> import demjson
