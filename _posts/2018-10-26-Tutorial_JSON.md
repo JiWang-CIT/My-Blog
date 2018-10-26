@@ -83,15 +83,15 @@ import json
 data = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]
 
 json = json.dumps(data)
-print json
+print (json)
 
-print json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(',', ': '))
+print (json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(',', ': ')))
 ```
 
 上記コードの実行結果は：
 
 ``` json
-[{"a": 1, "c": 3, "b": 2, "e": 5, "d": 4}]
+[{"a": 1, "b": 2, "c": 3, "d": 4, "e": 5}]
 {
     "a": "lakjf",
     "b": 6
@@ -116,7 +116,7 @@ import json
 jsonData = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
 text = json.loads(jsonData)
-print text
+print (text)
 ```
 
 上記コードの実行結果は：
