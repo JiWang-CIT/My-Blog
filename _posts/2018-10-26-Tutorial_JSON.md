@@ -7,11 +7,10 @@ categories:
 tags: Python, JSON
 ---
 
-# Tutorial for JSON
 
 ![JSON vector logo.svg](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/JSON_vector_logo.svg/160px-JSON_vector_logo.svg.png)
 
-## 1. What's JSON
+## What's JSON
 
 >  JSON, short for **J**ava**S**cript **O**bject **N**otation, is an open-standard file format that uses human-readable text to transmit data objects, used as a replacement for XML in some AJAX-style systems.
 >
@@ -23,7 +22,7 @@ tags: Python, JSON
 
 JSONの文字コードはUTF-8となることで，どのプラットフォームでもちゃんと動かせるメリットもある．
 
-## 2. JSONの文法規則
+## JSONの文法規則
 
 1. データ構造：**名前／値**　のペア構造．両者が一対一でコロン「`:`」で区切る
 2. データの間いにカンマ 「`,`」 で区切る．
@@ -53,7 +52,7 @@ JSONの文字コードはUTF-8となることで，どのプラットフォー�
 ```
 
 
-## 3. PythonでのJSON利用
+## PythonでのJSON利用
 
 Pythonでは，JSON利用のためのpackageがある
 
@@ -127,7 +126,7 @@ print (text)
 
 
 
-## 4. 補足
+## 補足
 
 PythonでのJSON利用について，`demjson`というサードパーティ製のpackageがある．公式サイトは　http://deron.meranda.us/python/demjson/
 
