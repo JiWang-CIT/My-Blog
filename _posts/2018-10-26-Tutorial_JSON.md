@@ -71,7 +71,7 @@ import json
 
 文法：
 
-```python
+```
 json.dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding="utf-8", default=None, sort_keys=False, **kw)
 ```
 
@@ -103,8 +103,8 @@ print (json.dumps({'a': 'lakjf', 'b': 6}, sort_keys=True, indent=4, separators=(
 
 文法：
 
-```python
-json.dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding="utf-8", default=None, sort_keys=False, **kw)
+```
+json.loads(s[, encoding[, cls[, object_hook[, parse_float[, parse_int[, parse_constant[, object_pairs_hook[, **kw]]]]]]]])
 ```
 
 使用例：
