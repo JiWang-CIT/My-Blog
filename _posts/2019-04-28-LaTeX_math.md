@@ -53,12 +53,14 @@ $$
 #### 上下标
 
 $$
-\begin{split*}
+\begin{equation}
+\begin{split}
 \textrm{2^{3^{4^5}}} & \longrightarrow & 2^{3^{4^5}} \\
 \textrm{2^{a_{b_c}}} & \longrightarrow & 2_{a_{b_c}} \\
 \textrm{2^{\circ}} & \longrightarrow & 2^{\circ} \\
 \textrm{\underset{0\leq j \leq k-1}{\arg\min}} & \longrightarrow & \underset{0\leq j \leq k-1}{\arg\min}
-\end{split*}
+\end{split}
+\end{equation}
 $$
 
 另外可以用宏(Macro)来增加一些常用数学表达式的便捷性
@@ -101,7 +103,7 @@ $$
 $$
 \begin{equation}
 	\begin{split}
- 		f(x) & = (x+a)(x+b) \\
+ 	f(x) & = (x+a)(x+b) \\
       	 & = x^2 + (a+b)x + ab
 	\end{split}
 \end{equation}
