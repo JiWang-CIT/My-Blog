@@ -55,10 +55,10 @@ $$
 $$
 \begin{equation}
 \begin{split}
-\textrm{2^{3^{4^5}}} & \longrightarrow & 2^{3^{4^5}} \\
-\textrm{2^{a_{b_c}}} & \longrightarrow & 2_{a_{b_c}} \\
+\textrm{2^{3}} & \longrightarrow & 2^{3} \\
+\textrm{2_{a}} & \longrightarrow & 2_{a} \\
 \textrm{2^{\circ}} & \longrightarrow & 2^{\circ} \\
-\textrm{\underset{0\leq j \leq k-1}{\arg\min}} & \longrightarrow & \underset{0\leq j \leq k-1}{\arg\min}
+\textrm{\underset{0\leq j}{\arg\min}} & \longrightarrow & \underset{0\leq j}{\arg\min}
 \end{split}
 \end{equation}
 $$
