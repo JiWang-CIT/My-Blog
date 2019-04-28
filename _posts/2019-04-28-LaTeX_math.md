@@ -66,12 +66,12 @@ $$
 另外可以用宏(Macro)来增加一些常用数学表达式的便捷性
 
 ```latex
-\newcommand{\combination}[2]{{}_{#1} \mathrm{C}_{#2}} % 预定义
+\newcommand{\combination}[2]{_{#1} \mathrm{C}_{#2}} % 预定义
 \combination{n}{k} = \frac{n!}{k! (n-k)!} % 正文中
 ```
 
 $$
-{}_{n} \mathrm{C}_{k} = \frac{n!}{k! (n-k)!}
+_{n}\mathrm{C}_{k} = \frac{n!}{k! (n-k)!}
 $$
 
 
