@@ -34,7 +34,7 @@ $$
 $$
 \begin{eqnarray}
 \$\textrm{different}\$ &\longrightarrow different \\
-\textrm{\textit{different}}&\longrightarrow \textit{different}
+\textrm{\textit{different}} &\longrightarrow \textit{different}
 \end{eqnarray}
 $$
 
