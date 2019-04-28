@@ -45,7 +45,7 @@ $$
 ``` latex
 \usepackage{newtxtext,newtxmath} % 正文和数学公式都使用Times系字体
 \usepackage{newpxtext,newpxmath} % 正文和数学公式都使用Palatino系字体
-\usepackage{mathpazo}						 % 正文和数学公式都使用Palatino系字体，设计略微不同
+\usepackage{mathpazo}		 % 正文和数学公式都使用Palatino系字体，设计略微不同
 ```
 
 ### 基础数学表达
