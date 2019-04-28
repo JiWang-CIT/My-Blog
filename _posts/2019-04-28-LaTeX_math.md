@@ -53,14 +53,12 @@ $$
 #### 上下标
 
 $$
-\begin{equation}
-\begin{split}
+\begin{align*}
 \textrm{2^{3}} & \longrightarrow & 2^{3} \\
 \textrm{2_{a}} & \longrightarrow & 2_{a} \\
 \textrm{2^{\circ}} & \longrightarrow & 2^{\circ} \\
 \textrm{\underset{0\leq j}{\arg\min}} & \longrightarrow & \underset{0\leq j}{\arg\min}
-\end{split}
-\end{equation}
+\end{align*}
 $$
 
 另外可以用宏(Macro)来增加一些常用数学表达式的便捷性
@@ -70,9 +68,7 @@ $$
 \combination{n}{k} = \frac{n!}{k! (n-k)!} % 正文中
 ```
 
-$$
-_{n}\mathrm{C}_{k} = \frac{n!}{k! (n-k)!}
-$$
+$$_n \mathrm{C}_{k} = \frac{n!}{k! (n-k)!}$$
 
 
 
@@ -101,12 +97,10 @@ $$
 $$
 
 $$
-\begin{equation}
-	\begin{split}
+	\begin{align*}
  	f(x) & = (x+a)(x+b) \\
       	 & = x^2 + (a+b)x + ab
-	\end{split}
-\end{equation}
+	\end{align*}
 $$
 
 #### 空格
