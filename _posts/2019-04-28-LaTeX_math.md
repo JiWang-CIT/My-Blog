@@ -31,6 +31,7 @@ $$
 E=mc^2 \tag{1}
 $$
 公式中的英文字体和文章中的字体有些略微区别，比如斜体的字符间距，默写情况就不是很符合读写习惯，所以如果公式中有需要插入英文单词的时候，推荐使用`\textit{}`来插入单词。
+
 $$
 \begin{eqnarray}
 \$\textrm{different}\$ &\longrightarrow different \\
